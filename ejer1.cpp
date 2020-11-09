@@ -3,6 +3,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <math.h>
+#include "quicksort.h"
 
 using namespace std;
 
