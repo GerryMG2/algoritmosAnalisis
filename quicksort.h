@@ -4,9 +4,11 @@
 
 
 using namespace std; 
-void swap(int* a, int* b)  
+
+template <class Q>
+void swap(Q* a, Q * b)  
 {  
-    int t = *a;  
+    Q t = *a;  
     *a = *b;  
     *b = t;  
 }  
@@ -16,21 +18,22 @@ the pivot element at its correct position in sorted
 array, and places all smaller (smaller than pivot)  
 to left of pivot and all greater elements to right  
 of pivot */
-int partition (int arr[], int low, int high)  
+template <class Q>
+int partition (Q arr[], int low, int high)  
 {  
-    int pivot = arr[high]; // pivot  
+    Q pivot = arr[high]; // pivot  
     int i = (low - 1); // Index of smaller element  
   
     for (int j = low; j <= high - 1; j++)  
     {  
         // If current element is smaller than the pivot  
-        if (arr[j] < pivot)  
+        if (arr[j]->key < pivot->key)  
         {  
             i++; // increment index of smaller element  
-            swap(&arr[i], &arr[j]);  
+            swap<Q>(&arr[i], &arr[j]);  
         }  
     }  
-    swap(&arr[i + 1], &arr[high]);  
+    swap<Q>(&arr[i + 1], &arr[high]);  
     return (i + 1);  
 }  
   
@@ -38,7 +41,8 @@ int partition (int arr[], int low, int high)
 arr[] --> Array to be sorted,  
 low --> Starting index,  
 high --> Ending index */
-void quickSort(int arr[], int low, int high)  
+template <class Q>
+void quickSort(Q arr[], int low, int high)  
 {  
     if (low < high)  
     {  
@@ -52,3 +56,5 @@ void quickSort(int arr[], int low, int high)
         quickSort(arr, pi + 1, high);  
     }  
 }  
+
+
