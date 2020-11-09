@@ -1,17 +1,22 @@
 #include <iostream>
 using namespace std;
 
-struct crew {
+struct crewT {
     int key;
     string name;
     string range; 
 
 };
 
-void swap(int*, int*);
-int partition(int, int, int);
-void quicksort(int, int, int);
-void printArr(int, int);
+template <class Q>
+void swap(Q*, Q*);
+
+template <class Q>
+int partition(Q[], int, int);
+
+template <class Q>
+void quicksort(Q[], int, int);
+
 
 int main(){
     
@@ -21,7 +26,7 @@ int main(){
     cout << "Total crew members: "<< endl;
     cin >> total;
 
-    crew arrCrew[total];
+    crewT arrCrew[total];
 
     for (int i = 0; i <= total; i++){
         
@@ -45,7 +50,7 @@ int main(){
     }
 
     int n = sizeof(arrCrew) / sizeof(arrCrew[0]);
-    quicksort<crew>(arrCrew, 0, n - 1);
+    quicksort<crewT>(arrCrew, 0, n - 1);
 
     return 0;
 }
@@ -77,7 +82,7 @@ int partition(Q arr[], int start, int finish){
 
     for (int j = start; j <= finish - 1; j++){
         //hace la comparacion su el elemento actual, es más pequeño que el pivote
-        if(arr[finish] <= pivot){
+        if(arr[finish].key < pivot.key){
             //incrementa el indice del elemento más pequeño
             i++;
             swap<Q>(&arr[i], &arr[j]);
@@ -102,28 +107,3 @@ void quicksort(Q arr[], int start, int finish){
         quicksort<Q>(arr, q + 1, finish);
     }
 }
-
-//Funcion para imprimr el arreglo
-/*void printArr(int arr[], int size){
-    for (int i = 0; i < size; i++){
-        cout << arr[i] << " ";
-        cout << endl;
-    }
-    
-}*/
-
-/*void crewMember(string arrCrew[]){
-    int total = 0;
-    cout << "Total crew members: "<< endl;
-    cin >> total;
-
-    for (int i = 0; i <= total; i++){
-        cout << "Name crew: " << endl;
-        cin >> arrCrew[i];
-
-        cout << "Type crew: " << endl;
-        cin >> arrCrew[i];
-
-    }
-    return;
-}*/
