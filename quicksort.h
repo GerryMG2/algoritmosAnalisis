@@ -48,13 +48,14 @@ void quickSort(Q arr[], int low, int high)
     {  
         /* pi is partitioning index, arr[p] is now  
         at right place */
-        int pi = partition(arr, low, high);  
+        int pi = partition<Q>(arr, low, high);  
   
         // Separately sort elements before  
         // partition and after partition  
-        quickSort(arr, low, pi - 1);  
-        quickSort(arr, pi + 1, high);  
+        quickSort<Q>(arr, low, pi - 1);  
+        quickSort<Q>(arr, pi + 1, high);  
     }  
 }  
 
 
+//quickSort<structura>(arr,0,size -1);
