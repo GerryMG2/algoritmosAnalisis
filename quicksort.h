@@ -27,7 +27,7 @@ int partition (Q arr[], int low, int high)
     for (int j = low; j <= high - 1; j++)  
     {  
         // If current element is smaller than the pivot  
-        if (arr[j]->key < pivot->key)  
+        if (arr[j].key < pivot.key)  
         {  
             i++; // increment index of smaller element  
             swap<Q>(&arr[i], &arr[j]);  
